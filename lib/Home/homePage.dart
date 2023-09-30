@@ -93,7 +93,7 @@ class _homePageState extends State<homePage> {
                       Container(
                         height: 200,
                         width: 200,
-                        child: Lottie.asset('aseets/gif/phone.json'),
+                        child: Lottie.asset('gif/phone.json'),
                       ),
                       SizedBox(
                         width: 25.0,

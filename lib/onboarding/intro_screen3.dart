@@ -15,7 +15,7 @@ class IntroPage3 extends StatelessWidget {
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,),),
-             Lottie.asset('aseets/gif/page3.json'),
+             Lottie.asset('gif/page3.json'),
         ],
       ),
 
