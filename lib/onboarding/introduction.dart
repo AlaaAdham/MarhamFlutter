@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_4/Auth/signup.dart';
+import 'package:flutter_application_4/Auth/signup/signup.dart';
 import 'package:flutter_application_4/onboarding/intro_screen1.dart';
 import 'package:flutter_application_4/onboarding/intro_screen2.dart';
 import 'package:flutter_application_4/onboarding/intro_screen3.dart';

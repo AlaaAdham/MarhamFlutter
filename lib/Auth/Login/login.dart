@@ -1,30 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_4/Auth/signup.dart';
+import 'package:flutter_application_4/Auth/Login/ValidateForm.dart';
+import 'package:flutter_application_4/Auth/Login/onpresseButton.dart';
+import 'package:flutter_application_4/Auth/signup/signup.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-class Login extends StatefulWidget{
+
+class Login extends StatefulWidget {
   Login({Key? key}) : super(key: key);
 
   @override
   State<Login> createState() => _LoginState();
-
 }
+
 class _LoginState extends State<Login> {
   GlobalKey<FormState> formstate = new GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    var email;
+    var username;
     var password;
-
-    bool validateForm() {
-      var formdata = formstate.currentState;
-
-      if (formdata != null && formdata.validate()) {
-        formdata.save();
-        return true;
-      } else
-        return false;
-    }
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -51,14 +44,14 @@ class _LoginState extends State<Login> {
                       style: Theme.of(context)
                           .textTheme
                           .headline5!
-                          .copyWith(fontWeight: FontWeight.bold,fontSize: 30),
-                          
+                          .copyWith(fontWeight: FontWeight.bold, fontSize: 30),
                     ),
                     Row(
                       children: [
-                        Text("Don't have an account?" ,style:TextStyle(
-                          fontSize: 25
-                        ),),
+                        Text(
+                          "Don't have an account?",
+                          style: TextStyle(fontSize: 25),
+                        ),
                         TextButton(
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
@@ -69,8 +62,8 @@ class _LoginState extends State<Login> {
                           },
                           child: Text(
                             "Sign Up!",
-                            style: TextStyle(fontSize: 25,
-                              fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontSize: 25, fontWeight: FontWeight.bold),
                           ),
                           style: ButtonStyle(
                             mouseCursor: MaterialStateMouseCursor.textable,
@@ -79,29 +72,23 @@ class _LoginState extends State<Login> {
                         SizedBox(height: 50.0),
                       ],
                     ),
-                   // SizedBox(height: 30.0),
+                    // SizedBox(height: 30.0),
                     Form(
                       key: formstate,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           TextFormField(
+                        
                             onSaved: (text) {
-                              email = text;
+                              username = text;
                             },
                             decoration: InputDecoration(
-                              labelText: 'Email',
-                              hintText: 'test@email.com',
+                                labelText: 'username',
+                                //hintText: 'test@email.com',
 
-                              labelStyle: TextStyle(
-                                fontSize: 25
-                              ),
-                              hintStyle: TextStyle(
-                                fontSize: 25
-                              )
-                              
-                            ),
-                            
+                                labelStyle: TextStyle(fontSize: 25),
+                                hintStyle: TextStyle(fontSize: 25)),
                           ),
                           SizedBox(height: 50.0),
                           TextFormField(
@@ -110,23 +97,35 @@ class _LoginState extends State<Login> {
                             },
                             obscureText: true,
                             decoration: InputDecoration(
-                              labelText: 'Password',
-                              hintText: 'Enter your password',
-                               labelStyle: TextStyle(
-                                fontSize: 25
-                              ),
-                              hintStyle: TextStyle(
-                                fontSize: 25
-                              )
-                            ),
+                                labelText: 'Password',
+                                hintText: 'Enter your password',
+                                labelStyle: TextStyle(fontSize: 25),
+                                hintStyle: TextStyle(fontSize: 25)),
                           ),
                           SizedBox(height: 50.0),
                           ElevatedButton(
-                            onPressed: () {
-                              print("Email: $email");
-                              print("Password: $password");
-                              // Handle sign-in logic here
-                            },
+                           onPressed: () => {
+                             if (validateForm(formstate)) 
+                            {onButtonPressed(context, username, password)}
+                            else
+                                {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Please fill in both username and password',
+                                        style: TextStyle(
+                                          fontSize: 25,
+                                          fontFamily: 'Helvetica',
+                                        ),
+                                      ),
+                                      backgroundColor:
+                                          Color.fromARGB(221, 252, 57, 43),
+                                      duration: Duration(seconds: 3),
+                                    ),
+                                  )
+                            }
+                           
+                           },
                             child: Text(
                               "Sign In",
                               style: TextStyle(
