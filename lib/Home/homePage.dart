@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/Home/category.dart';
 import 'package:flutter_application_4/Home/doctor.dart';
@@ -27,13 +26,14 @@ class _homePageState extends State<homePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFE0E0E0),
       body: SingleChildScrollView(
         child: Container(
           child: Column(
             children: [
               //app bar
               Padding(
-                padding: EdgeInsets.fromLTRB(30.0, 60.0, 30.0, 20.0),
+                padding: const EdgeInsets.fromLTRB(30.0, 60.0, 30.0, 20.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -43,7 +43,7 @@ class _homePageState extends State<homePage> {
                         Text(
                           'Hello,',
                           style: TextStyle(
-                            fontSize: 28.0,
+                            fontSize: 25.0,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -51,9 +51,9 @@ class _homePageState extends State<homePage> {
                           height: 6.0,
                         ),
                         Text(
-                          'batool kh', //change
+                          'batool kh',
                           style: TextStyle(
-                            fontSize: 28.0,
+                            fontSize: 25.0,
                             fontWeight: FontWeight.bold,
                           ),
                         )
@@ -66,15 +66,14 @@ class _homePageState extends State<homePage> {
                       decoration: BoxDecoration(
                           color: Colors.deepPurple[100],
                           borderRadius: BorderRadius.circular(50)),
-                      child: Image.asset(
-                        'assets/tooth.png', //change
-                        height: 50.0,
+                      child: Icon(
+                        Icons.person,
+                        size: 40.0,
                       ),
                     ),
                   ],
                 ),
               ),
-
               SizedBox(height: 15.0),
 
               //card how do u fell
@@ -92,59 +91,63 @@ class _homePageState extends State<homePage> {
                       Container(
                         height: 200,
                         width: 200,
-                        child: Lottie.asset('gif/phone.json'),
+                        decoration: BoxDecoration(
+                          color: Colors.deepPurple[300],
+                        ),
                       ),
                       SizedBox(
                         width: 25.0,
+                      ),
+                      //text
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'How do you feel?!',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            Text(
+                              'Fill out your medical card right now',
+                              style: TextStyle(
+                                fontSize: 18.0,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 15.0,
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(12.0),
+                              decoration: BoxDecoration(
+                                color: Colors.deepPurple[300],
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Get Started',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ],
                   ),
                 ),
               ),
-              //text
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'How do you feel?!',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    Text(
-                      'Fill out your medical card right now',
-                      style: TextStyle(
-                        fontSize: 18.0,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15.0,
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(12.0),
-                      decoration: BoxDecoration(
-                        color: Colors.deepPurple[300],
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Get Started',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+              SizedBox(
+                height: 25.0,
               ),
-
               //search bar
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -155,16 +158,18 @@ class _homePageState extends State<homePage> {
                     color: Colors.blue[100],
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 5),
-                    child: TextField(
+                  child:
+                   Padding(
+                     padding: const EdgeInsets.only(top:5.0),
+                     child: TextField(
                       decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.search),
-                          border: InputBorder.none,
-                          hintText: 'how we can help you?',
-                          hintStyle: TextStyle(fontSize: 20)),
-                    ),
-                  ),
+                        prefixIcon: Icon(Icons.search),
+                        border: InputBorder.none,
+                        hintText: 'how we can help you?',
+                        hintStyle: TextStyle(fontSize: 20),
+                      ),
+                                     ),
+                   ),
                 ),
               ),
               SizedBox(
@@ -182,7 +187,6 @@ class _homePageState extends State<homePage> {
                           categoryName: _categories[index]);
                     }),
               ),
-
               SizedBox(
                 height: 25,
               ),
@@ -210,7 +214,6 @@ class _homePageState extends State<homePage> {
               SizedBox(
                 height: 15,
               ),
-              //doctors
               Container(
                 height: 335.0,
                 child: ListView.builder(
